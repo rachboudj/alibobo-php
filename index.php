@@ -1,5 +1,8 @@
 <?php 
 
+require_once './fonctions/autoLoad.php';
+autoLoad("*.php");
+
 // echo "<pre>";
 // var_dump($_SERVER);
 // echo "</pre>";
