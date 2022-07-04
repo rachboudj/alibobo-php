@@ -17,7 +17,7 @@
     // Null coalescent operator
     $page = $_GET['page'] ?? "accueil";
 
-    require_once './includes/' .$page . ".inc.php";
+    autoInclude($page);
     
     ?>
 </main>
