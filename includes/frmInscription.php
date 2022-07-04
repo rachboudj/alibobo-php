@@ -23,4 +23,5 @@
         <input type="reset" value="Effacer" />
         <input type="submit" value="Soumettre" />
     </div>
+    <input type="hidden" name="frmInscription" />
 </form>
