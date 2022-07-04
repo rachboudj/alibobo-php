@@ -21,15 +21,39 @@ if (isset($_POST['frmInscription'])) {
     
     if (mb_strlen($email) === 0)
         array_push($erreurs, "Veuillez saisir une adresse mail");
+    
+    elseif (!(filter_var($email, FILTER_VALIDATE_EMAIL)))
+        array_push($erreurs, "Veuillez saisir une adresse mail conforme");
 
-    $messageErreurs = "<ul>";
-    for ($i = 0; $i < count($erreurs); $i++) {
+    if (mb_strlen($mdp1) === 0 || mb_strlen($mdp2) === 0) {
+            array_push($erreurs, "Veuillez saisir deux fois votre mot de passe");
+    }
+
+    elseif ($mdp1 !== $mdp2) {
+        array_push($erreurs, "Vos mots de passe ne sont pas identiques");
+    }
+
+    if (count($erreurs) > 0) {
+        $messageErreurs = "<ul>";
+
+        for ($i = 0; $i < count($erreurs); $i++) {
         $messageErreurs .= "<li>";
         $messageErreurs .= $erreurs[$i];
         $messageErreurs .= "<li>";
     }
+        $messageErreurs .= "</ul>";
+    } else {
+        $mdp1 = sha1($mdp1);
+        $requeteInscription = "INSERT INTO t_utilisateurs
+        (id_utilisateur, nom, prenom, email, mdp)
+        VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')
+        ";
+        die($requeteInscription);
+    }
 
-    $messageErreurs .= "</ul>";
+    
+
+    
 
 } else {
     require_once 'frmInscription.php';
