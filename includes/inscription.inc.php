@@ -42,6 +42,9 @@ if (isset($_POST['frmInscription'])) {
         $messageErreurs .= "<li>";
     }
         $messageErreurs .= "</ul>";
+        echo $messageErreurs;
+
+        require_once './includes/frmInscription.php';
     } else {
         $mdp1 = sha1($mdp1);
         $requeteInscription = "INSERT INTO t_utilisateurs
