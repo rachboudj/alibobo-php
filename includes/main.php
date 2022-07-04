@@ -9,5 +9,7 @@
         dumb($page);
     } else 
         echo "Pas de paramètre 'page' dans l'URL";
+
+    
     ?>
 </main>
