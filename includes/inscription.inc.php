@@ -59,6 +59,7 @@ if (isset($_POST['frmInscription'])) {
     
 
 } else {
+    $nom = $prenom = $email = "";
     require_once 'frmInscription.php';
     echo "Je viens du futur";
 }
