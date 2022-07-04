@@ -13,11 +13,11 @@
     </div>
     <div>
         <label for="mdp1">Mot de passe :</label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="mdp1" name="mdp1" />
     </div>
     <div>
-        <label for="mdp2">Nom :</label>
-        <input type="text" id="nom" name="nom" />
+        <label for="mdp2">Vérification du mots de passe :</label>
+        <input type="password" id="mdp2" name="mdp2" />
     </div>
     <div>
         <input type="reset" value="Effacer" />
