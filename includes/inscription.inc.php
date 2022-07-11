@@ -2,7 +2,7 @@
 
 <?php 
 
-
+require('fonctions/pdo.php');
 
 if (isset($_POST['frmInscription'])) {
     echo "Je viens du formulaire";
@@ -57,10 +57,10 @@ if (isset($_POST['frmInscription'])) {
             $sql = "INSERT INTO utilisateurs (id_utilisateur, nom, prenom, email, mdp) 
             VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')";
             $query = $pdo->prepare($sql);
-            $query->bindValue(':title',$title, PDO::PARAM_STR);
-            $query->bindValue(':content',$content, PDO::PARAM_STR);
-            $query->bindValue(':auteur',$auteur, PDO::PARAM_STR);
-            $query->bindValue(':status',$status, PDO::PARAM_STR);
+            $query->bindValue(':nom',$nom, PDO::PARAM_STR);
+            $query->bindValue(':prenom',$prenom, PDO::PARAM_STR);
+            $query->bindValue(':email',$email, PDO::PARAM_STR);
+            $query->bindValue(':mdp',$mdp1, PDO::PARAM_STR);
             $query->execute();
             $last_id = $pdo->lastInsertId();
             // header('Location: index.php');
