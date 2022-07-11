@@ -48,14 +48,14 @@ if (isset($_POST['frmInscription'])) {
 
         require_once './includes/frmInscription.php';
     } else {
-        // $mdp1 = sha1($mdp1);
+        $mdp1 = sha1($mdp1);
         // $requeteInscription = "INSERT INTO t_utilisateurs
         // (id_utilisateur, nom, prenom, email, mdp)
         // VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')
         // ";
         
-            $sql = "INSERT INTO utilisateurs (id_utilisateur, nom, prenom, email, mdp) 
-            VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')";
+            $sql = "INSERT INTO utilisateurs (nom, prenom, email, mdp) 
+            VALUES ('$nom', '$prenom', '$email', '$mdp1')";
             $query = $pdo->prepare($sql);
             $query->bindValue(':nom',$nom, PDO::PARAM_STR);
             $query->bindValue(':prenom',$prenom, PDO::PARAM_STR);
@@ -65,7 +65,7 @@ if (isset($_POST['frmInscription'])) {
             $last_id = $pdo->lastInsertId();
             // header('Location: index.php');
             // $success = true;
-            // die($requeteInscription);
+            die($sql);
     }
 
     
