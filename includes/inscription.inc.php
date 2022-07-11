@@ -56,6 +56,7 @@ if (isset($_POST['frmInscription'])) {
         
             $sql = "INSERT INTO utilisateurs (nom, prenom, email, mdp) 
             VALUES ('$nom', '$prenom', '$email', '$mdp1')";
+            die($sql);
             $query = $pdo->prepare($sql);
             $query->bindValue(':nom',$nom, PDO::PARAM_STR);
             $query->bindValue(':prenom',$prenom, PDO::PARAM_STR);
@@ -65,7 +66,6 @@ if (isset($_POST['frmInscription'])) {
             $last_id = $pdo->lastInsertId();
             // header('Location: index.php');
             // $success = true;
-            die($sql);
     }
 
     
