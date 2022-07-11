@@ -2,6 +2,8 @@
 
 <?php 
 
+
+
 if (isset($_POST['frmInscription'])) {
     echo "Je viens du formulaire";
 
@@ -46,12 +48,24 @@ if (isset($_POST['frmInscription'])) {
 
         require_once './includes/frmInscription.php';
     } else {
-        $mdp1 = sha1($mdp1);
-        $requeteInscription = "INSERT INTO t_utilisateurs
-        (id_utilisateur, nom, prenom, email, mdp)
-        VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')
-        ";
-        die($requeteInscription);
+        // $mdp1 = sha1($mdp1);
+        // $requeteInscription = "INSERT INTO t_utilisateurs
+        // (id_utilisateur, nom, prenom, email, mdp)
+        // VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')
+        // ";
+        
+            $sql = "INSERT INTO utilisateurs (id_utilisateur, nom, prenom, email, mdp) 
+            VALUES (NULL, '$nom', '$prenom', '$email', '$mdp1')";
+            $query = $pdo->prepare($sql);
+            $query->bindValue(':title',$title, PDO::PARAM_STR);
+            $query->bindValue(':content',$content, PDO::PARAM_STR);
+            $query->bindValue(':auteur',$auteur, PDO::PARAM_STR);
+            $query->bindValue(':status',$status, PDO::PARAM_STR);
+            $query->execute();
+            $last_id = $pdo->lastInsertId();
+            // header('Location: index.php');
+            // $success = true;
+            // die($requeteInscription);
     }
 
     
