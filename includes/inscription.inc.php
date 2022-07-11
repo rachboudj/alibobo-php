@@ -2,7 +2,7 @@
 
 <?php 
 
-require('fonctions/pdo.php');
+require('./fonctions/pdo.php');
 
 if (isset($_POST['frmInscription'])) {
     echo "Je viens du formulaire";
@@ -55,9 +55,9 @@ if (isset($_POST['frmInscription'])) {
         // ";
         
             $sql = "INSERT INTO utilisateurs (nom, prenom, email, mdp) 
-            VALUES ('$nom', '$prenom', '$email', '$mdp1')";
-            die($sql);
-            var_dump($pdo);
+            VALUES (:nom, :prenom, :email, :mdp)";
+            // die($sql);
+            // var_dump($pdo);
             $query = $pdo->prepare($sql);
             $query->bindValue(':nom',$nom, PDO::PARAM_STR);
             $query->bindValue(':prenom',$prenom, PDO::PARAM_STR);
