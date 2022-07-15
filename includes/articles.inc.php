@@ -15,7 +15,7 @@ $alibobos = $query->fetchAll();
             //debug($alibobo); ?>
             <li>
                 <h2><?php echo ucfirst($alibobo['designation']); ?></h2>
-                <a href="detailProduit.php?id=<?php echo $alibobo['id_article']; ?>">Voir plus</a>
+                <a href="./includes/detailProduit.php?id=<?php echo $alibobo['id_article']; ?>">Voir plus</a>
             </li>
         <?php } ?>
     </ul>
