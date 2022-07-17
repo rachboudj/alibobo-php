@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,7 @@
                 <li><a href="index.php?page=articles">Articles</a></li>
                 <li><a href="index.php?page=inscription">Inscription</a></li>
                 <li><a href="index.php?page=login">Login</a></li>
+                <li><a href="index.php?page=panier">Panier</a></li>
             </ul>
         </nav>
     </header>
