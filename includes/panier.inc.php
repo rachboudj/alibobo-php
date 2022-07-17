@@ -12,8 +12,8 @@
         </div>
         <p class="status">En stock</p>
         <div class="quantity-delete-cart">
-            <input type="number" name="quantity" id="quantity">
-            <button><a href="">Supprimer</a></button>
+            <input type="number" name="quantity" class="quantity">
+            <button class="delete"><a href="">Supprimer</a></button>
         </div>
     </div>
 </div>
