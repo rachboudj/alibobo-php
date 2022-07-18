@@ -56,7 +56,8 @@ if (isset($_POST['frmLogin'])) {
         <input type="password" id="mdp" name="mdp" />
     </div>
     <div>
+        <input type="reset" value="Effacer" />
         <input type="submit" value="Se connecter" />
     </div>
     <input type="hidden" name="frmLogin" />
-</form> 
+</form>
