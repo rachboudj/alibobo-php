@@ -3,7 +3,47 @@
 // Affichage des articles pour les utilisateurs connectés abec les droits admin
 
 if (verifierAdmin()) {
-    'SELECT * FROM articles ORDER BY designation ASC';
+    if ($pdo = pdo()) {
+        $requeteArticles = "SELECT * FROM articles ORDER BY designation ASC";
+
+        $tableauResultats = "<table>";
+        $tableauResultats .= "<thead>";
+        $tableauResultats .= "<tr>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Catégorie";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Référence";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Désignation";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "PUHT";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Taux de TVA";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Masse";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Quantité en stock";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th>";
+        $tableauResultats .= "Stocke de sécurité";
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "</tr>";
+        $tableauResultats .= "</thead>";
+
+        $tableauResultats .= "<tbody>";
+        $tableauResultats .= "</tbody>";
+
+        $tableauResultats .= "</table>";
+
+    } else {
+        echo "<p>Erreur PDO</p>";
+    }
 
 } else {
     echo "<script>setTimeout(function () {
@@ -19,6 +59,7 @@ if (verifierAdmin()) {
         }, 5000);
     </script>
     ";
+    echo $codeJs;
 }
 
 /* Les erreurs http
