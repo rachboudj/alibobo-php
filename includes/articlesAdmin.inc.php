@@ -37,6 +37,22 @@ if (verifierAdmin()) {
         $tableauResultats .= "</thead>";
 
         $tableauResultats .= "<tbody>";
+
+        foreach ($requeteRequeteArticles as $row) {
+            $tableauResultats .= "<tr>";
+            $tableauResultats .= "<td>". $row['id_categorie'] ."</td>";
+            $tableauResultats .= "<td>". $row['reference'] ."</td>";
+            $tableauResultats .= "<td>". $row['designation'] ."</td>";
+            $tableauResultats .= "<td>". $row['puht'] ."</td>";
+            $tableauResultats .= "<td>". $row['id_tva'] ."</td>";
+            $tableauResultats .= "<td>". $row['masse'] ."</td>";
+            $tableauResultats .= "<td>". $row['id_categorie'] ."</td>";
+            $tableauResultats .= "<td>". $row['qtestock'] ."</td>";
+            $tableauResultats .= "<td>". $row['qtestocksecu'] ."</td>";
+            $tableauResultats .= "</tbody>";
+            $tableauResultats .= "</tr>";
+        }
+
         $tableauResultats .= "</tbody>";
 
         $tableauResultats .= "</table>";
@@ -70,6 +86,8 @@ if (verifierAdmin()) {
 - les 500 : 
 
 Important de connaitre les 5 principales.
+
+Le jour où ils mettront les cons en orbite, il y en a bcp qui ne s'arrêteront pas de tourné
 
 */
 
