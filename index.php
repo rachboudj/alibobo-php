@@ -9,9 +9,6 @@ require_once './fonctions/autoLoad.php';
 autoLoad("*.php");
 require __DIR__.'/vendor/autoload.php';
 
-
-require __DIR__ . '/vendor/autoload.php';
-
 dump($_SESSION);
 
 
