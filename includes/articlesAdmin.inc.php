@@ -1,94 +1,77 @@
 <?php
 
-// Affichage des articles pour les utilisateurs connectés abec les droits admin
+// Affichage des articles pour les utilisateurs connectés avec les droits admin
+
 
 if (verifierAdmin()) {
-    if ($pdo = pdo()) {
-        $requeteArticles = "SELECT * FROM articles ORDER BY designation ASC";
+    if ($pdo = pdo()) { 
+        $champ = $_GET['champ'] ?? "designation";
+        $orderby = $_GET['orderby'] ?? "asc";
 
-        $tableauResultats = "<table>";
+        $requeteArticles = "SELECT * FROM articles ORDER BY $champ $orderby";
+
+        $tableauResultats = "<table id=\"articles\">";
         $tableauResultats .= "<thead>";
         $tableauResultats .= "<tr>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "Catégorie";
+        $tableauResultats .= genererUrl('Catégories', 'categorie', $champ, $orderby);
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
         $tableauResultats .= "Référence";
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "Désignation";
+        $tableauResultats .= genererUrl('Désignation', 'designation', $champ, $orderby);
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "PUHT";
+        $tableauResultats .= genererUrl('PUHT', 'puht', $champ, $orderby);;
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
         $tableauResultats .= "Taux de TVA";
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "Masse";
+        $tableauResultats .= genererUrl('Masse', 'masse', $champ, $orderby);;
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "Quantité en stock";
+        $tableauResultats .= genererUrl('Quantité en stock', 'qtestock', $champ, $orderby);
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= "Stocke de sécurité";
+        $tableauResultats .= genererUrl('Stock de sécurité', 'qtestocksecu', $champ, $orderby);
         $tableauResultats .= "</th>";
         $tableauResultats .= "</tr>";
         $tableauResultats .= "</thead>";
-
         $tableauResultats .= "<tbody>";
 
-        foreach ($requeteRequeteArticles as $row) {
+        $resultatRequeteArticles = $pdo->query($requeteArticles)->fetchAll();
+
+        foreach($resultatRequeteArticles as $row) {
             $tableauResultats .= "<tr>";
-            $tableauResultats .= "<td>". $row['id_categorie'] ."</td>";
-            $tableauResultats .= "<td>". $row['reference'] ."</td>";
-            $tableauResultats .= "<td>". $row['designation'] ."</td>";
-            $tableauResultats .= "<td>". $row['puht'] ."</td>";
-            $tableauResultats .= "<td>". $row['id_tva'] ."</td>";
-            $tableauResultats .= "<td>". $row['masse'] ."</td>";
-            $tableauResultats .= "<td>". $row['id_categorie'] ."</td>";
-            $tableauResultats .= "<td>". $row['qtestock'] ."</td>";
-            $tableauResultats .= "<td>". $row['qtestocksecu'] ."</td>";
-            $tableauResultats .= "</tbody>";
+            $tableauResultats .= "<td>" . $row['id_categorie'] . "</td>";
+            $tableauResultats .= "<td>" . $row['reference'] . "</td>";
+            $tableauResultats .= "<td><a href=\"index.php?page=articleDetailAdmin&amp;articleId=" . $row['id_article'] . "\">" . $row['designation'] . "</a></td>";
+            $tableauResultats .= "<td>" . $row['puht'] . "</td>";
+            $tableauResultats .= "<td>" . $row['id_tva'] . "</td>";
+            $tableauResultats .= "<td>" . $row['masse'] . "</td>";
+            $tableauResultats .= "<td>" . $row['qtestock'] . "</td>";
+            $tableauResultats .= "<td>" . $row['qtestocksecu'] . "</td>";
             $tableauResultats .= "</tr>";
         }
 
         $tableauResultats .= "</tbody>";
-
         $tableauResultats .= "</table>";
+
+        echo $tableauResultats;
 
     } else {
         echo "<p>Erreur PDO</p>";
     }
-
 } else {
-    echo "<script>setTimeout(function () {
-        window.location.href= 'index.php?page=accueil';
-        }, 5000)
-    </script>";
-
-    $codeJS = "<p>Vous allez être redirigé dans 5 secondes. <br>Si la redirection n'est </p>";
-    $codeJS .= "
+    $codeJs = "<p>Vous allez être redirigé dans 5 secondes.<br />Si la redirection n'est pas automatique, <a href=\"http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/\">cliquez ici</a></p>";
+    $codeJs .= "
     <script>
         setTimeout(function() {
-            window.location.replace('http://localhost:8886/alibobo/');
+            window.location.replace('http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/')
         }, 5000);
     </script>
     ";
     echo $codeJs;
 }
-
-/* Les erreurs http
-
-- 200 : tt se passe bien
-- la série des 300 (301 (redirection permanente), 302 (redirection temporaire)...) : redirection
-- les 400 (400 (pas les droits), 402, 404, 418 ()) : erreur
-- les 500 : 
-
-Important de connaitre les 5 principales.
-
-Le jour où ils mettront les cons en orbite, il y en a bcp qui ne s'arrêteront pas de tourné
-
-*/
-
-?>
