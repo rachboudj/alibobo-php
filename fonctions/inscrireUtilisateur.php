@@ -1,7 +1,7 @@
 <?php
 
 function inscrireUtilisateur(string $nom, string $prenom, string $email, string $mdp): bool {
-    $mdp = sha1($mdp);
+    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
     if ($pdo = pdo()) {
         $requeteInscription = "INSERT INTO utilisateurs
