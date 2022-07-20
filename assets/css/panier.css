@@ -1,0 +1,36 @@
+.container-cart {
+    width: 100%;
+    background-color: #fff;
+    padding: 3em 0;
+}
+
+.container-cart .card-cart .title-price-cart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-cart .card-cart .status {
+    margin-top: 0.3em;
+    color: #0f0;
+    font-size: 0.8em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.container-cart .card-cart .quantity-delete-cart {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.container-cart .card-cart .quantity {
+    width: max-content;
+}
+
+.container-cart .card-cart .delete {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    font-weight: 900;
+    width: max-content;
+}
