@@ -34,12 +34,13 @@ if (isset($_POST['frmLogin'])) {
 
     } else {
         if (verifierLogin($email,$mdp)) {
-            $recupDatasUser = "SELECT prenom, nom FROM utilisateurs WHERE email='$email'";
+            $recupDatasUser = "SELECT prenom, nom, role FROM utilisateurs WHERE email='$email'";
             if ($pdo = pdo()) {
                 $datasUser = $pdo->query($recupDatasUser);
                 $datasUser = $datasUser->fetchAll();
                 $_SESSION['prenom'] = $datasUser[0]['prenom'];
                 $_SESSION['nom'] = $datasUser[0]['nom'];
+                $_SESSION['role'] = $datasUser[0]['role'];
             }
 
             $_SESSION['login'] = true;
