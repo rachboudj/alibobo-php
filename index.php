@@ -23,7 +23,16 @@ dump($_SERVER["REQUEST_URI"]);
 // Définir le fuseau horaire dans lequel le serveur se trouve 
 date_default_timezone_set('Europe/Paris');
 
-include './includes/header.php';
-include './includes/main.php';
-include './includes/footer.php';
+/* Utiliser include ou require
+* include renvoie un avertissement simple en cas d'erreur
+* require renvoie une erreur fatale et arrête l'exécution du script
+*/
+
+if (verifierAdmin()) 
+    require_once './includes/headerAdmin.php';
+else 
+    require_once './includes/header.php';
+
+require_once './includes/main.php';
+require_once './includes/footer.php';
 
