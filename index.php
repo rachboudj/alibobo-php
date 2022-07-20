@@ -1,7 +1,17 @@
 <?php 
 
+session_start();
+
+$_SESSION['message'] = 'Il fait chaud';
+
+
 require_once './fonctions/autoLoad.php';
 autoLoad("*.php");
+
+require __DIR__ . '/vendor/autoload.php';
+
+dump($_SESSION);
+
 
 // echo "<pre>";
 // var_dump($_SERVER);
