@@ -38,7 +38,7 @@ if (verifierAdmin()) {
         $tableauResultats .= "<th>";
         $tableauResultats .= genererUrl('Stock de sécurité', 'qtestocksecu', $champ, $orderby);
         $tableauResultats .= "</th>";
-        $tableauResultats .= "<th>";
+        $tableauResultats .= "<th colspan=\"2\">";
         $tableauResultats .= "Opérations";
         $tableauResultats .= "</th>";
         $tableauResultats .= "</tr>";
@@ -57,7 +57,7 @@ if (verifierAdmin()) {
             $tableauResultats .= "<td>" . $row['masse'] . "</td>";
             $tableauResultats .= "<td>" . $row['qtestock'] . "</td>";
             $tableauResultats .= "<td>" . $row['qtestocksecu'] . "</td>";
-            $tableauResultats .= "<td <a href=\"index.php?page=articleSuppression&amp;articleId=" . $row['id_article'] . "\">" . "Supprimer</a></td>";
+            $tableauResultats .= "<td><button><a href=\"index.php?page=supprimerArticles&amp;articleId=" . $row['id_article'] . "\">" . "Supprimer</a></button></td>";
             $tableauResultats .= "<td><button>Modifier</button></td>";
             $tableauResultats .= "</tr>";
         }
@@ -75,7 +75,7 @@ if (verifierAdmin()) {
     $codeJs .= "
     <script>
         setTimeout(function() {
-            window.location.replace('http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/')
+            window.location.replace('http://localhost:8080/alibobo/')
         }, 5000);
     </script>
     ";
